@@ -1,0 +1,1 @@
+This pulls data from the OMDB API and displays it is a React/Typescript app. The App pulls a limit of 10 movies, and allows the user to sort them in various ways.

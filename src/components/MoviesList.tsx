@@ -7,6 +7,7 @@ import {
   sortReverseAlphabetic,
   sortReverseNumeric,
 } from "../utilities/sort";
+import ToggleTheme from "./ToggleTheme";
 interface Result {
   Search: Movie[];
 }
@@ -19,6 +20,7 @@ export interface Movie {
 
 const MoviesList = () => {
   const [movies, setMovies] = useState<Movie[]>();
+  const [darkMode, setDarkMode] = useState<boolean>(false);
   useEffect(() => {
     const fetchMovies = async () => {
       const response = await fetch(
@@ -53,13 +55,19 @@ const MoviesList = () => {
       // code block
     }
   };
-
+  const handleToggle = () => {
+    console.log("toggle");
+    setDarkMode(!darkMode);
+  };
   return (
     <div
       className="container text-center"
-      style={{ backgroundColor: "rgb(14 14 15)" }}
+      style={{ backgroundColor: darkMode ? "rgb(14 14 15)" : "white" }}
     >
-      <SortMovies onSort={handleSort} />
+      <div className="row pt-5 pb-2" style={{ justifyContent: "space-around" }}>
+        <SortMovies onSort={handleSort} />
+        <ToggleTheme darkMode={darkMode} onToggle={handleToggle} />
+      </div>
       <div className="row" style={{ justifyContent: "space-evenly" }}>
         {movies?.map((item) => (
           //   <div key={item.Title}>{item.Title}</div>

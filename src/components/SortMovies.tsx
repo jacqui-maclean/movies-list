@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface Props {
   onSort: (sortOrder: string) => void;
@@ -7,8 +7,7 @@ interface Props {
 const SortMovies = ({ onSort }: Props) => {
   const [sortOrder, setSortOrder] = useState("");
   return (
-    <div style={{ padding: "3rem" }}>
-      <h1 style={{ color: "white" }}>SortMovies</h1>;
+    <div>
       <form>
         <div className="input-group mb-3">
           <label className="input-group-text">Sort by:</label>

@@ -8,6 +8,7 @@ import {
   sortReverseNumeric,
 } from "../utilities/sort";
 import ToggleTheme from "./ToggleTheme";
+import { API_KEY } from "../secret-consts";
 interface Result {
   Search: Movie[];
 }
@@ -24,7 +25,7 @@ const MoviesList = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       const response = await fetch(
-        "https://www.omdbapi.com/?apikey=8eb24c06&s=batman"
+        "https://www.omdbapi.com/?apikey=" + API_KEY + "&s=batman"
       );
       let results = await response.json();
       let Movies = results.Search;

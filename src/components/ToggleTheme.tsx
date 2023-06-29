@@ -11,7 +11,7 @@ const ToggleTheme = ({ darkMode, onToggle }: Props) => {
           type="checkbox"
           className="custom-control-input"
           id="customSwitches"
-          checked
+          defaultChecked
         />
       ) : (
         <input

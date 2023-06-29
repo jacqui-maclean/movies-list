@@ -9,9 +9,11 @@ import {
 } from "../utilities/sort";
 import ToggleTheme from "./ToggleTheme";
 import { API_KEY } from "../secret-consts";
+
 interface Result {
   Search: Movie[];
 }
+
 export interface Movie {
   Title: string;
   Poster: string;
@@ -28,7 +30,8 @@ const MoviesList = () => {
         "https://www.omdbapi.com/?apikey=" + API_KEY + "&s=batman"
       );
       let results = await response.json();
-      let Movies = results.Search;
+      //can not use dot notation for typing eg :Result.Search, have to use :Result["Search"]
+      let Movies: Result["Search"] = results.Search; //we searched for batman movies in the api call, so we get the results of the search like this eg response.Search
       setMovies(Movies);
     };
     fetchMovies();
@@ -37,29 +40,21 @@ const MoviesList = () => {
   const handleSort = (order: string) => {
     switch (order) {
       case "title-reverse":
-        let resultA = sortReverseAlphabetic(movies!);
-        setMovies([...resultA]);
+        setMovies(sortReverseAlphabetic(movies!));
         break;
       case "title":
-        let resultB = sortAlphabetic(movies!);
-        setMovies([...resultB]);
+        setMovies(sortAlphabetic(movies!));
         break;
       case "yearNew":
-        let resultC = sortNumeric(movies!);
-        setMovies([...resultC]);
+        setMovies(sortNumeric(movies!));
         break;
       case "yearOld":
-        let resultD = sortReverseNumeric(movies!);
-        setMovies([...resultD]);
+        setMovies(sortReverseNumeric(movies!));
         break;
       default:
-      // code block
     }
   };
-  const handleToggle = () => {
-    console.log("toggle");
-    setDarkMode(!darkMode);
-  };
+
   return (
     <div
       className="container text-center"
@@ -67,11 +62,13 @@ const MoviesList = () => {
     >
       <div className="row pt-5 pb-2" style={{ justifyContent: "space-around" }}>
         <SortMovies onSort={handleSort} />
-        <ToggleTheme darkMode={darkMode} onToggle={handleToggle} />
+        <ToggleTheme
+          darkMode={darkMode}
+          onToggle={() => setDarkMode(!darkMode)}
+        />
       </div>
       <div className="row" style={{ justifyContent: "space-evenly" }}>
         {movies?.map((item) => (
-          //   <div key={item.Title}>{item.Title}</div>
           <MovieCard movie={item} key={item.imdbID} />
         ))}
       </div>

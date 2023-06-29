@@ -1,4 +1,3 @@
-// import "../App.css";
 interface Props {
   darkMode: boolean;
   onToggle: () => void;
@@ -11,7 +10,7 @@ const ToggleTheme = ({ darkMode, onToggle }: Props) => {
           type="checkbox"
           className="custom-control-input"
           id="customSwitches"
-          checked
+          defaultChecked //instead of checked, solves controlled/uncontrolled element error code
         />
       ) : (
         <input

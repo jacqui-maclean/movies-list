@@ -12,7 +12,8 @@ const MovieCard = ({ movie }: Props) => {
         width: "18rem",
         marginRight: "1rem",
         marginBottom: "1rem",
-        border: "none",
+        border: "1,grey,solid",
+        paddingTop: "1rem",
       }}
     >
       <img src={movie.Poster} className="card-img-top" alt="..." />

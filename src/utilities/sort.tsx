@@ -1,13 +1,6 @@
-import Movie from "../components/MoviesList";
+import { Movie } from "../components/MoviesList";
 
-interface Props {
-  Title: string;
-  Poster: string;
-  Year: string;
-  imdbID: string;
-}
-
-export const sortAlphabetic = (movies: Props[]) => {
+export const sortAlphabetic = (movies: Movie[]) => {
   const alphaOrderedMovies = movies!.sort((a, b) => {
     const nameA = a.Title.toUpperCase(); // ignore upper and lowercase
     const nameB = b.Title.toUpperCase(); // ignore upper and lowercase
@@ -23,7 +16,7 @@ export const sortAlphabetic = (movies: Props[]) => {
   return [...alphaOrderedMovies];
 };
 
-export const sortReverseAlphabetic = (movies: Props[]) => {
+export const sortReverseAlphabetic = (movies: Movie[]) => {
   const alphaReverseOrderedMovies = movies!.sort((a, b) => {
     const nameA = a.Title.toUpperCase(); // ignore upper and lowercase
     const nameB = b.Title.toUpperCase(); // ignore upper and lowercase
@@ -39,13 +32,13 @@ export const sortReverseAlphabetic = (movies: Props[]) => {
   return [...alphaReverseOrderedMovies];
 };
 
-export const sortNumeric = (movies: Props[]) => {
+export const sortNumeric = (movies: Movie[]) => {
   const numericOrderedMovies = movies!.sort((a, b) => {
     return parseFloat(b.Year) - parseFloat(a.Year);
   });
   return [...numericOrderedMovies];
 };
-export const sortReverseNumeric = (movies: Props[]) => {
+export const sortReverseNumeric = (movies: Movie[]) => {
   const numericReverseOrderedMovies = movies!.sort((a, b) => {
     return parseFloat(a.Year) - parseFloat(b.Year);
   });

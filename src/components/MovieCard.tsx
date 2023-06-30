@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Movie } from "./MoviesList";
 
 interface Props {
@@ -8,7 +7,6 @@ interface Props {
 const MovieCard = ({ movie }: Props) => {
   return (
     <div
-      key={movie.imdbID}
       className="card movieCard"
       style={{
         width: "18rem",

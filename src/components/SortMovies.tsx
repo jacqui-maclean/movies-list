@@ -1,3 +1,9 @@
+//renders input box where user selects sort order
+//stores the current sort order in state to render in the box
+//accepts prop from MoviesList of onSort.
+//onChange calls onSort with the new input value eg new sort order
+//The new order is calculated and updated in the parent component eg MoviesList
+
 import { useState } from "react";
 
 interface Props {

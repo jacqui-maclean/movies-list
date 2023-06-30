@@ -10,7 +10,7 @@ const ToggleTheme = ({ darkMode, onToggle }: Props) => {
           type="checkbox"
           className="custom-control-input"
           id="customSwitches"
-          checked
+          defaultChecked // removes react warning react-dom.development.js:86 Warning: A component is changing an uncontrolled input to be controlled.
         />
       ) : (
         <input

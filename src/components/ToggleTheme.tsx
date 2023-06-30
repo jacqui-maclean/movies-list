@@ -26,7 +26,7 @@ const ToggleTheme = ({ darkMode, onToggle }: Props) => {
 
       <label
         className="form-check-label"
-        style={{ color: darkMode ? "white" : "black" }}
+        style={{ color: darkMode ? "white" : "black", paddingLeft: "0.5rem" }}
       >
         {darkMode ? "Switch to light mode" : "Switch to dark mode"}
       </label>
